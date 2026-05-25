@@ -86,7 +86,6 @@ extension ClearScoreViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ClearScoreViewController: ScorePresenterViewable {
     func fetchScoreSuccess(score: ScoreModel) {
-       
         self.scoreModel = score
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -97,8 +96,8 @@ extension ClearScoreViewController: ScorePresenterViewable {
     func fetchScoreFailure(error: String) {
         DispatchQueue.main.async {
             self.hideBusyView()
-            //create an alert to display error
-            print("error testing: \(error)")
+            self.tableView.isHidden = true
+            self.showErrorMessage(title: "Clear Score", message: error)
         }
     }
 }
