@@ -38,7 +38,7 @@ class ScoreInteractor: ScoreInteractable {
                 
             case .failure(let error):
                 // 9. FAILURE -> send error to presenter
-                self.presenter.getScoreFailure(error: error.localizedDescription)
+                self.presenter.getScoreFailure(error: "Technical Error")
             }
         }
     }
