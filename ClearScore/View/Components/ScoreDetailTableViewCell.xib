@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNN-Sy-k1u">
-                        <rect key="frame" x="0.0" y="0.0" width="590" height="112"/>
+                        <rect key="frame" x="0.0" y="15" width="590" height="97"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-zn-eFz">
-                                <rect key="frame" x="20" y="0.0" width="550" height="112"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-zn-eFz">
+                                <rect key="frame" x="20" y="0.0" width="550" height="97"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="CNN-Sy-k1u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HL8-A3-WgT"/>
+                    <constraint firstItem="CNN-Sy-k1u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="5N1-ZT-03a"/>
                     <constraint firstAttribute="trailing" secondItem="CNN-Sy-k1u" secondAttribute="trailing" id="cl2-38-i3B"/>
                     <constraint firstAttribute="bottom" secondItem="CNN-Sy-k1u" secondAttribute="bottom" id="elM-nf-zIP"/>
                     <constraint firstItem="CNN-Sy-k1u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sqa-vU-J4g"/>

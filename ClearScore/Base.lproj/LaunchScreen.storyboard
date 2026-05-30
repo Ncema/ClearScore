@@ -21,9 +21,10 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearscore" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-Aw-r0E">
                                         <rect key="frame" x="20" y="238.33333333333337" width="353" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PDJ-Aw-r0E" secondAttribute="trailing" constant="20" id="6qn-M9-qYK"/>
                                     <constraint firstItem="PDJ-Aw-r0E" firstAttribute="leading" secondItem="BVa-1a-EaA" secondAttribute="leading" constant="20" id="BCd-m8-ON4"/>
