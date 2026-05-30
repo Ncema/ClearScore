@@ -48,6 +48,7 @@ class ClearScoreViewController: UIViewController {
         self.presenter = DependencyContainer.makeScoreModule()
         self.presenter?.view = self
         self.fetchScore()
+        overrideUserInterfaceStyle = .light
     }
     
     override func viewDidAppear(_ animated: Bool) {

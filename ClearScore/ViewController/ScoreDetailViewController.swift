@@ -42,6 +42,7 @@ class ScoreDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpNavigationBar(title: "Details")
+        overrideUserInterfaceStyle = .light
         self.setUpTableView()
     }
 }

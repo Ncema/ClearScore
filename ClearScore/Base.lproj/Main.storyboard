@@ -21,9 +21,10 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clearscore" translatesAutoresizingMaskIntoConstraints="NO" id="ObS-hg-ZlT">
                                         <rect key="frame" x="20" y="273" width="353" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ObS-hg-ZlT" firstAttribute="leading" secondItem="htJ-qd-gq2" secondAttribute="leading" constant="20" id="3OK-7q-pwI"/>
                                     <constraint firstItem="ObS-hg-ZlT" firstAttribute="centerX" secondItem="htJ-qd-gq2" secondAttribute="centerX" id="53K-MZ-Tys"/>
