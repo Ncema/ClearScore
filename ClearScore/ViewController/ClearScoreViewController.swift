@@ -14,8 +14,7 @@ class ClearScoreViewController: UIViewController {
     
     
     //MARK: - Variables
-    var presenter: ScorePresentable?
-    var scoreModel: ScoreModel?
+    private  let  viewModel: ClearScoreViewModel?
     var wireframe: WireframeDelegate?
     
     
@@ -31,37 +30,54 @@ class ClearScoreViewController: UIViewController {
     
     
     //MARK: - Lifecycle
-    convenience init() {
-        self.init(nibName: "ClearScoreViewController", bundle: nil)
-    }
-    
-    override init(nibName nibNameorNil: String?, bundle nibBundleorNil: Bundle?) {
-        super.init(nibName: nibNameorNil, bundle: nibBundleorNil)
+     init(viewModel: ClearScoreViewModel?) {
+        self.viewModel = viewModel
+        super.init(nibName: "ClearScoreViewController", bundle: nil)
+      
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("coder has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = DependencyContainer.makeScoreModule()
-        self.presenter?.view = self
-        self.fetchScore()
         overrideUserInterfaceStyle = .light
+        self.setUpTableView()
+        self.bindViewModel()
+        self.fetchScore()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setUpTableView()
     }
     
     
     //MARK: - Helper method
     func fetchScore() {
         self.showBusyView()
-        self.presenter?.fetchScore()
+        self.viewModel?.fetchScore()
     }
+    
+    private func bindViewModel() {
+
+        viewModel?.onScoreLoaded = { [weak self] in
+             DispatchQueue.main.async {
+                 self?.hideBusyView()
+                 self?.tableView.reloadData()
+             }
+         }
+
+         viewModel?.onError = { [weak self] error in
+             DispatchQueue.main.async {
+                 self?.hideBusyView()
+                 self?.tableView.isHidden = true
+                 self?.showErrorMessage(
+                     title: "Clear Score",
+                     message: error)
+             }
+         }
+     }
 }
 
 
@@ -75,7 +91,7 @@ extension ClearScoreViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 if let cell = tableView.dequeueReusableCell(withIdentifier: ClearScoreTableViewCell.identifier, for: indexPath) as? ClearScoreTableViewCell {
-                    cell.decorateCell(clearScorePercentage: String(self.scoreModel?.creditReportInfo?.score ?? 0), subTitle: String("out of \(self.scoreModel?.creditReportInfo?.maxScoreValue ?? 0)"), delegate: self)
+                    cell.decorateCell(clearScorePercentage: String(self.viewModel?.scoreModel?.creditReportInfo?.score ?? 0), subTitle: String("out of \(self.viewModel?.scoreModel?.creditReportInfo?.maxScoreValue ?? 0)"), delegate: self)
                     return cell
                 }
             }
@@ -85,28 +101,10 @@ extension ClearScoreViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension ClearScoreViewController: ScorePresenterViewable {
-    func fetchScoreSuccess(score: ScoreModel) {
-        self.scoreModel = score
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.hideBusyView()
-        }
-    }
-    
-    func fetchScoreFailure(error: String) {
-        DispatchQueue.main.async {
-            self.hideBusyView()
-            self.tableView.isHidden = true
-            self.showErrorMessage(title: "Clear Score", message: error)
-        }
-    }
-}
-
-
 extension ClearScoreViewController: ClearScoreTableViewCellDelegate {
+
     func didTapClearScoreCircle() {
-        Wireframe.shared.transitionToScoreDetailViewController(controller: self, scoreModel: self.scoreModel)
+        let detailVC = ScoreDetailViewController(viewModel: self.viewModel)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
