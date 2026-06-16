@@ -81,7 +81,7 @@ extension ScoreDetailViewController: UITableViewDataSource, UITableViewDelegate 
                 return cell
             }
         }
-        else if indexPath.row == 5 {
+        else if indexPath.row == 4 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: ScoreDetailTableViewCell.identifier) as? ScoreDetailTableViewCell {
                 cell.decorateCell(titleOne: "Current long term debt", titleTwo: String(self.scoreModel?.creditReportInfo?.currentLongTermDebt ?? 0))
                 return cell
