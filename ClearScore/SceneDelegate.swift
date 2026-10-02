@@ -16,8 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
+        let service = DataService()
+        let viewModel =  ClearScoreViewModel(service: service)
         
-        let vc = ClearScoreViewController()
+        let vc = ClearScoreViewController(viewModel: viewModel)
         let nav = UINavigationController(rootViewController: vc)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

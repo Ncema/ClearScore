@@ -8,6 +8,6 @@
 import UIKit
 
 protocol WireframeDelegate {
-    func transitionToClearScoreViewController(controller: UIViewController,scoreModel: ScoreModel?)
-    func transitionToScoreDetailViewController(controller: UIViewController, scoreModel: ScoreModel?)
+    func transitionToClearScoreViewController(controller: UIViewController,viewModel: ClearScoreViewModel?)
+    func transitionToScoreDetailViewController(controller: UIViewController, viewModel: ClearScoreViewModel?)
 }

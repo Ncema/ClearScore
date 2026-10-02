@@ -11,17 +11,17 @@ class Wireframe: WireframeDelegate {
     
     static let shared = Wireframe()
     var wireframe: WireframeDelegate?
-    func transitionToClearScoreViewController(controller: UIViewController,scoreModel: ScoreModel?) {
+    func transitionToClearScoreViewController(controller: UIViewController,viewModel: ClearScoreViewModel?) {
         self.wireframe = Wireframe()
-        let newController = ClearScoreViewController()
+        let newController = ClearScoreViewController(viewModel: viewModel)
         newController.wireframe = self.wireframe
         let navigationController = UINavigationController(rootViewController: newController)
         navigationController.modalPresentationStyle = .fullScreen
         controller.navigationController?.pushViewController(newController, animated: true)
     }
     
-    func transitionToScoreDetailViewController(controller: UIViewController, scoreModel: ScoreModel?) {
-        let newController = ScoreDetailViewController(scoreModel: scoreModel)
+    func transitionToScoreDetailViewController(controller: UIViewController, viewModel: ClearScoreViewModel?) {
+        let newController = ScoreDetailViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: newController)
         navigationController.modalPresentationStyle = .fullScreen
         controller.navigationController?.pushViewController(newController, animated: true)
